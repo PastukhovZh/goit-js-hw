@@ -22,40 +22,62 @@ const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 const TIME_KEY = `videoplayer-current-time`;
 let timeSeconds;
+const currentTime = JSON.parse(localStorage.getItem(TIME_KEY));
+
+fixedTime()
+
 
 function newThrottleTime(e) {
     const changingTimeInVideo = JSON.stringify(e.seconds);
     localStorage.setItem(TIME_KEY, changingTimeInVideo);
 } 
 
-function fixedTime() {
-    JSON.parse(localStorage.getItem(TIME_KEY))
-    if (JSON.parse(localStorage.getItem(TIME_KEY)) !== 0) {
-        return JSON.parse(localStorage.setItem(TIME_KEY, timeSeconds))
-    }
-    else {
-    timeSeconds = 0;
-    }
-}
-// const currentTime = JSON.parse(localStorage.getItem(TIME_KEY))
+
+///////////////////////////////////////
+
 
 // function fixedTime() {
-//     if (currentTime === null) {
-//         localStorage.setItem(TIME_KEY, 0)
+//     if ((currentTime) === 0) {
+//         timeSeconds = 0;
+//         localStorage.setItem(TIME_KEY, timeSeconds)
+//         JSON.parse(localStorage.getItem(TIME_KEY))
+//         return
 //     }
-//     player.setCurrentTime(localStorage.getItem(TIME_KEY))
+//     else {
+//         localStorage.setItem(TIME_KEY, timeSeconds)
+//         JSON.parse(localStorage.getItem(TIME_KEY))
+//         return
 // }
+// }
+console.log(localStorage.getItem(TIME_KEY))
 
-fixedTime();
+////////////////////////////////////////////////
+
+
+
+
+function fixedTime() {
+    if (currentTime === null) {
+        timeSeconds = 0
+        localStorage.setItem(TIME_KEY, timeSeconds)
+    }
+
+    const timeNow = localStorage.getItem(TIME_KEY);
+    timeSeconds = timeNow;
+    JSON.parse(timeSeconds);
+    // localStorage.setItem(TIME_KEY, timeSeconds)
+    player.setCurrentTime(localStorage.getItem(TIME_KEY));
+}
+
 
 player.on('timeupdate', throttle(newThrottleTime, 1000));
 
 
-function resumePlayback() {
-    if (JSON.parse(localStorage.getItem(TIME_KEY)) === null) {
-        return;
-    }
-}
+// function resumePlayback() {
+//     if (JSON.parse(localStorage.getItem(TIME_KEY)) === null) {
+//         return;
+//     }
+// }
 
-resumePlayback()
+// resumePlayback()
 // player.setCurrentTime(localStorage.getItem(TIME_KEY));
