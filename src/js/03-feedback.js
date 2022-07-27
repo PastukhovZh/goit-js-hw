@@ -30,7 +30,7 @@ function onFormSubmit(e) {
     e.preventDefault();
 
 
-  if (textareaValue.value && inputEmail.value !== null) {
+  if (textareaValue.value && inputEmail.value !== "") {
         e.currentTarget.reset();
   localStorage.removeItem(MSG_KEY);
     
@@ -42,36 +42,16 @@ return alert('Ты шо')
 function onTextAreaInput(e) {
    formData[e.target.name] = e.target.value;
     const msg = JSON.stringify(formData);
-  // const msg = e.target.value;
     localStorage.setItem(MSG_KEY, msg)
 }
 
 function savedTextareaValue() {
-  // const savedText = localStorage.getItem(MSG_KEY);
-  // textareaValue.value = savedText;
-  // inputEmail.value = savedText;
-
- const savedMessage = JSON.parse(localStorage.getItem(MSG_KEY));
-  if (textareaValue.value && inputEmail.value) {
-    savedMessage['message', 'email']
+  const savedText = JSON.parse(localStorage.getItem(MSG_KEY));
+  if (!savedText) {
+    return
   }
-  
-  textareaValue.value = savedMessage['message'] || '';
-    inputEmail.value = savedMessage['email'] || '' ;
-}
+    savedText['message', 'email'] || '';
+    textareaValue.value = savedText['message'] || '';
+    inputEmail.value = savedText['email'] || '';
 
-
-
-// inputEmail.addEventListener('input', e => {
-
-//     // textareaValue.addEventListener("input", e => {
-//     //     formData[e.target.name] = e.target.value;
-//     // })
-
-//     formData[e.target.name] = e.target.value;
-
-//   console.log(formData);
-// });
-
-
-// const listnerOfForm = form.addEventListener('input'
+};
