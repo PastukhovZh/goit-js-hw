@@ -37,6 +37,7 @@ function onInputValues() {
   let userForm = {};
   formData.forEach((value, name) => (userForm[name] = value.trim()));
   localStorage.setItem(MSG_KEY, JSON.stringify(userForm));
+console.log(userForm)
 }
 
 savedInputValue()
