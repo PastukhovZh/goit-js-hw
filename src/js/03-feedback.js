@@ -21,13 +21,13 @@ form.addEventListener('input', throttle(onInputValues, 500));
 
 
 function onFormSubmit(e) {
-  
+  e.preventDefault();
   if (form.message.value && form.email.value !== "") {
   e.currentTarget.reset();
     localStorage.removeItem(MSG_KEY);
     console.log(userForm)
   } else{
-    e.preventDefault();
+    
     return alert('Ты шо')
     }
 }
