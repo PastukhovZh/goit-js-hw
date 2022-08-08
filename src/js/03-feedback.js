@@ -50,6 +50,10 @@ function savedInputValue() {
   if (!savedText) {
     return
   }
+ Object.entries(savedText).forEach(([name, value]) => {
+      form.elements[name].value = value;
+      userForm[name] = value;
+    });
     savedText['message', 'email'] || '';
     form.message.value = savedText['message'] || '';
     form.email.value = savedText['email'] || '';
