@@ -25,7 +25,8 @@ function onFormSubmit(e) {
   if (form.message.value && form.email.value !== "") {
   e.currentTarget.reset();
     localStorage.removeItem(MSG_KEY);
-    console.log(userForm)
+    userForm = {};
+    console.log(userForm);
   } else{
     
     return alert('Ты шо')
