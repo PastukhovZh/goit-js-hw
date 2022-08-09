@@ -28,7 +28,6 @@ function onFormSubmit(e) {
     userForm = {};
     console.log(userForm);
   } else{
-    
     return alert('Ты шо')
     }
 }
