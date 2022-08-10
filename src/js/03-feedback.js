@@ -14,7 +14,7 @@ import throttle from "lodash.throttle";
 const MSG_KEY = "feedback-form-state";
 
 const form = document.querySelector('.feedback-form');
-  const userForm = {};
+  let userForm = {};
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', throttle(onInputValues, 500));
 
@@ -28,7 +28,10 @@ function onFormSubmit(e) {
 
     e.currentTarget.reset();
     localStorage.removeItem(MSG_KEY);
-    } else{
+  } else {
+    
+    userForm = {}
+    console.log(userForm);
       return alert('Ты шо')
     }
 }
