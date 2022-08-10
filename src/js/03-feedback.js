@@ -14,7 +14,7 @@ import throttle from "lodash.throttle";
 const MSG_KEY = "feedback-form-state";
 
 const form = document.querySelector('.feedback-form');
-  let userForm = {};
+  const userForm = {};
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input', throttle(onInputValues, 500));
 
@@ -22,13 +22,14 @@ form.addEventListener('input', throttle(onInputValues, 500));
 
 function onFormSubmit(e) {
   e.preventDefault();
+
   if (form.message.value && form.email.value !== "") {
-  e.currentTarget.reset();
-    localStorage.removeItem(MSG_KEY);
-    userForm = {};
     console.log(userForm);
-  } else{
-    return alert('Ты шо')
+
+    e.currentTarget.reset();
+    localStorage.removeItem(MSG_KEY);
+    } else{
+      return alert('Ты шо')
     }
 }
 
